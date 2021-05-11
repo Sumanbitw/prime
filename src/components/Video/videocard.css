@@ -1,0 +1,20 @@
+.videolist{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12%;
+}
+
+.videocard__container{
+    margin-top: 8rem;
+    text-decoration: none;
+}
+.videocard__img{
+    height: 50%;
+    width: 20rem;
+}
+.videocard__img img{
+    height: 100%;
+    width: 100%;
+}

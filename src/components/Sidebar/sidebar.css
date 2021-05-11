@@ -1,7 +1,7 @@
 .sidebar{
  display: block;
  position: fixed;
- /* top: 5rem; */
+ top: 5rem;
  left: 0;
  width: 15%;
  height: 100vh;
