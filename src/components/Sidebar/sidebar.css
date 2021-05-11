@@ -1,0 +1,32 @@
+.sidebar{
+ display: block;
+ position: fixed;
+ top: 5.5rem;
+ width: 15%;
+ height: 100vh;
+ border-right: 1px solid #1F2937;
+ background-color: #1F2937;
+ color: whitesmoke;
+}
+
+.sidebar__lists{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+li{
+    list-style: none;
+    padding: 1rem;
+}
+span{
+    padding-left: 1rem;
+}
+.link{
+    text-decoration:none;
+    color:whitesmoke;
+}
+@media screen and (max-width:760px) {
+    .sidebar{
+        display: none;
+    }
+}
