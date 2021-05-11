@@ -12,31 +12,31 @@ function Sidebar() {
             <ul className="sidebar__lists">
                 <li>
                     <Link to="/" className="link">
-                    <IoHome/>
+                    <IoHome size={24}/>
                     <span>Home</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/playlist" className="link">
-                    <RiPlayListFill/>
+                    <RiPlayListFill size={24}/>
                     <span>Playlist</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/bookmark" className="link">
-                    <FaBookmark/>
+                    <FaBookmark size={24}/>
                     <span>Bookmark</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/watch-later" className="link">
-                    <MdWatchLater/>
+                    <MdWatchLater size={24}/>
                     <span>Watch Later</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/library" className="link">
-                    <MdLibraryAdd/>
+                    <MdLibraryAdd size={24}/>
                     <span>Library</span>
                     </Link>
                 </li>

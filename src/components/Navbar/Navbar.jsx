@@ -6,12 +6,11 @@ import "./navbar.css"
 
 function Navbar() {
     const [click, setClick] = useState(false)
-    const [button, setButton] = useState(true)
+    // const [button, setButton] = useState(true)
   
-    const handleClick = () => setClick(!click)
+    const handleClick = () => setClick(prev => !prev)
     const closeMobileMenu = () => setClick(false)
     return (
-        <div>
         <nav className="navbar">
          <div className="navbar__container container">
            <Link to="/" className="navbar__logo" 
@@ -68,7 +67,6 @@ function Navbar() {
             </ul>  
          </div>
        </nav>
-        </div>
     )
 }
 
