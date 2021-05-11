@@ -1,4 +1,3 @@
-import {v4 as uuid} from "react-uuid"
 
 export const data = [
     {   
