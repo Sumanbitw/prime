@@ -12,16 +12,17 @@ function VideoCard({ item, id }) {
                         <img src={imageURL(id)} className="image" alt="" />
                     </Link>
                 </div>
-            <div className="videolib__details">
-                <img src={item.image} className="videolib__image"/>
-                <p className="videolib__title">{item.title}</p>
-                <p><FiMoreVertical  size={28} /></p>
-            </div>
-            
-            <div className="videolib__info">
+            <div className="videoCard">
+                <div className="videocard__details">
+                <img src={item.image} className="videocard__image" alt=""/>
+                </div>
+            <div className="videocard__info">
+            <p className="videocard__title">{item.title}</p>
+            <p><FiMoreVertical  size={28} /></p>
             <p>{item.subscribers}K</p>
             <p>{item.date}</p>
             </div> 
+        </div>
         </div>
     )
 }

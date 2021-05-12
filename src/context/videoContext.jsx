@@ -5,7 +5,7 @@ const VideoLibrary = createContext();
 
 export default function VideoPlayer ({ children }) {
     
-    const initialState = [{
+    const initialState = {
         videos : [],
         bookmarkVideos : [],
         watchLaterVideos : [],
@@ -14,12 +14,12 @@ export default function VideoPlayer ({ children }) {
             name : "Playlist",
             videos : [],
         }]
-    }] 
+    }
 
     const [state, dispatch] = useReducer(reducer, initialState)
    
     return (
-        <VideoLibrary.Provider value={state, dispatch}>
+        <VideoLibrary.Provider value={{state, dispatch}}>
             { children }
         </VideoLibrary.Provider>
     )
