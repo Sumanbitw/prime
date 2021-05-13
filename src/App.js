@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Video from "./components/Video/Video"
 import VideoDetails from './components/Video/VideoDetails';
 import Bookmark from './pages/Bookmark';
+import WatchLater from './pages/Watchlater';
 
 
 function App() {
@@ -18,8 +19,8 @@ function App() {
       <Route path="/" element={<Video/>}/>
       <Route path="/videodetails/:id" element={<VideoDetails/>}/>
        <Route path="/bookmark" element={<Bookmark/>}/>
-      {/*<Route path="/watch-later" element={<WatchLater/>} />
-      <Route path="/playlist" element={<Playlist/>}/>
+      <Route path="/watch-later" element={<WatchLater/>} />
+      {/*<Route path="/playlist" element={<Playlist/>}/>
       <Route path="/login" element={<Login/>}/>  */}
     </Routes>
     </div>
