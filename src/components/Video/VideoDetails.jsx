@@ -5,7 +5,7 @@ import  { BsFillBookmarkFill } from "react-icons/bs"
 // import axios from "axios"
 import { MdPlaylistAdd } from "react-icons/md"
 import { FaRegClock } from "react-icons/fa"
-// import Modal from "../pages/VideoDetails/Modal/Modal"
+import Modal from "../../pages/Modal"
 import "./video.css"
 import { useLibrary } from '../../context/videoContext'
 import ReactPlayer from 'react-player'
@@ -15,19 +15,20 @@ import { videoURL } from "../../util/util"
 function VideoDetails() {
     const [showModal, setShowModal] = useState(false)
     const { dispatch } = useLibrary()
+    const [video, setVideo] = useState({})
     const open = () => setShowModal(true)
     const close = () => setShowModal(false)
     
-    const { id } = useParams() 
+    const { videoId } = useParams() 
+    
 
-    const videoObject =  data.find(videoItem => videoItem.id === id )
-   console.log({videoObject})
+    const videoObject =  data.find(videoItem => videoItem.id === videoId )
 
     return (
         <div className="videodetails">
         <div className="video">
          <div className="video__container">
-            <ReactPlayer url={videoURL(videoObject.vid)} 
+            <ReactPlayer url={videoURL(videoObject.id)} 
             className="react__player"
             playing
             controls={true}
@@ -56,12 +57,16 @@ function VideoDetails() {
                     <MdPlaylistAdd 
                     size={28} 
                     className="icons" 
-                    onClick={() => open()}
+                    onClick={() => {
+                        open();
+                        setVideo(videoObject)
+                    }}
                     />
-                    {/* <Modal 
+                    <Modal 
                     showModal={showModal} 
                     close={close}
-                    /> */}
+                    video={video}
+                    />
                 </div>
                 
             </div>

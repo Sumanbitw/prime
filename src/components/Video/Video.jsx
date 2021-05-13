@@ -9,7 +9,7 @@ function Videolist() {
     return (
         <div className="videolist">
             {data.map(item => (
-                <VideoCard item={item} id={item.vid}/>
+                <VideoCard item={item} vid={item.id}/>
             ))}
         </div>
     )

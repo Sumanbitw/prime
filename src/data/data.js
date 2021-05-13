@@ -1,8 +1,8 @@
 
 export const data = [
     {   
-        id : "10",
-        vid:"QD2hxpQd_b0",
+        vid : "10",
+        id:"QD2hxpQd_b0",
         categoryId : "1",
         image:"https://yt3.ggpht.com/ytc/AAUvwnjoPIgYZCMXAkTqrJ84_TQAABqplaHmlfuOMqq0Bw=s88-c-k-c0x00ffffff-no-rj",
         title:"Nidahas Trophy 2018 Final Match, Final Over - India vs Bangladesh",
@@ -14,8 +14,8 @@ export const data = [
         category:["batting"]
     } ,
     {
-    id :"11", 
-    vid:"8oOj2x4_OMs",
+    vid :"11", 
+    id:"8oOj2x4_OMs",
     categoryId : "2",
     image:"https://yt3.ggpht.com/ytc/AAUvwnim96pLrDexOYYgsQ2PEU8Q7iz7kPUVF8PDU3pdqQ=s88-c-k-c0x00ffffff-no-rj",
     title:"Batting for Beginners - Cricket Batting Tips",
@@ -28,8 +28,8 @@ export const data = [
     },
     
     {
-    id:"12",
-    vid:"Kk1P_91DaBI",
+    vid:"12",
+    id:"Kk1P_91DaBI",
     categoryId : "3",
     image:"https://yt3.ggpht.com/ytc/AAUvwnjn3qOy6HCjMDhQExDZFX-X2fHSZZOdF0apkIlX=s88-c-k-c0x00ffffff-no-rj",
     title:"Leg Spin Masterclass with Shane Warne and Rashid Khan | The Big Break",
@@ -41,8 +41,8 @@ export const data = [
     category:["bowling"],
     }, 
     {
-    id:"13",
-    vid:"2wdT4zzNinI",
+    vid:"13",
+    id:"2wdT4zzNinI",
     categoryId:"4",
     image:"https://yt3.ggpht.com/ytc/AAUvwniNv1oOUlrVxCAQQdKIIPf8HC4sG4dAk2ipTVTjFQ=s48-c-k-c0x00ffffff-no-rj",
     title:"Cricket Masterclass: The art of attacking batting with Gilchrist, Pietersen and Ponting",
@@ -55,8 +55,8 @@ export const data = [
 
     },
     {
-    id:"14",    
-    vid:"5yTyKmNAxMA",
+    vid:"14",    
+    id:"5yTyKmNAxMA",
     categoryId:"5",
     image:"https://yt3.ggpht.com/ytc/AAUvwniL0hCTIn4-UE9SlgiKBZw_uxMs6ys2BQoY6CWF=s88-c-k-c0x00ffffff-no-rj",
     title:"Best Ever Fast Bowling Masterclass With Brett Lee",

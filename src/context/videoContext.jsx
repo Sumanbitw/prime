@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { reducer } from "../reducer/createReducer"
+import faker from "faker"
 
 const VideoLibrary = createContext();
 
@@ -10,7 +11,7 @@ export default function VideoPlayer ({ children }) {
         bookmarkVideos : [],
         watchLaterVideos : [],
         playlist : [{
-            id : Date.now(),
+            id : faker.datatype.uuid(),
             name : "Playlist",
             videos : [],
         }]

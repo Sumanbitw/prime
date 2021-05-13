@@ -7,6 +7,8 @@ import Video from "./components/Video/Video"
 import VideoDetails from './components/Video/VideoDetails';
 import Bookmark from './pages/Bookmark';
 import WatchLater from './pages/Watchlater';
+import Playlist from './pages/Playlist';
+import PlaylistDetails from './pages/PlaylistDetails';
 
 
 function App() {
@@ -17,11 +19,12 @@ function App() {
     <SidebarMobile/>
     <Routes>
       <Route path="/" element={<Video/>}/>
-      <Route path="/videodetails/:id" element={<VideoDetails/>}/>
+      <Route path="/videodetails/:videoId" element={<VideoDetails/>}/>
        <Route path="/bookmark" element={<Bookmark/>}/>
       <Route path="/watch-later" element={<WatchLater/>} />
-      {/*<Route path="/playlist" element={<Playlist/>}/>
-      <Route path="/login" element={<Login/>}/>  */}
+      <Route path="/playlist" element={<Playlist/>}/>
+      <Route path="/playlist/:playlistId" element={<PlaylistDetails/>} />
+      {/*<Route path="/login" element={<Login/>}/>  */}
     </Routes>
     </div>
   );

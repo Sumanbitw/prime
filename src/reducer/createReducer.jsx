@@ -8,6 +8,16 @@ export const reducer = ( state, action ) => {
         case "CREATE__WATCHLATERVIDEOS":
             return { ...state, watchLaterVideos : [ ...state.watchLaterVideos, action.payload ]}
         
+        case "CREATE__PLAYLIST": 
+            return {...state, playlist : state.playlist.concat(action.payload)}
+
+        case "ADD__PLAYLIST":
+            console.log(state.playlist)
+            return {...state, playlist : state.playlist.map(videoItem => {
+                return videoItem.id !== action.payload.id
+                ? videoItem
+                : {...videoItem, videos: videoItem.videos.concat(action.payload.videoId)}
+            })}
         default :
          return state
     }

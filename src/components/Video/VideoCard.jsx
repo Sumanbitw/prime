@@ -4,12 +4,12 @@ import { imageURL } from "../../util/util"
 import { FiMoreVertical } from "react-icons/fi"
 import "./videocard.css"
 
-function VideoCard({ item, id }) {
+function VideoCard({ item, vid }) {
     return (
             <div className="videocard__container">
                 <div className="videocard__img">  
                     <Link to={`/videodetails/${item.id}`}>
-                        <img src={imageURL(id)} className="image" alt="" />
+                        <img src={imageURL(vid)} className="image" alt="" />
                     </Link>
                 </div>
             <div className="videoCard">
