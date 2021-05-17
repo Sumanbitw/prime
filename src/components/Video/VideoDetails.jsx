@@ -26,29 +26,33 @@ function VideoDetails() {
 
     return (
         <div className="videodetails">
-        <div className="video">
-         <div className="video__container">
-            <ReactPlayer url={videoURL(videoObject.id)} 
-            className="react__player"
-            playing
-            controls={true}
-            />
-            
-            <div className="text__container">
-                <div><p>{videoObject.title}</p></div>
-                <div className="text__align">
+            <div className="video">
+            <div className="video__container">
+                <ReactPlayer url={videoURL(videoObject.id)} 
+                className="react__player"
+                playing
+                controls={false}
+                width="100%" 
+                />
+            </div>
+        <div className="text__container">
+            <div>
+                <p>{videoObject.title}</p>
+                <p>{videoObject.description}</p>
+            <div className="text__align">
                 <p>{videoObject.views} views</p>
                 <p>{videoObject.subscribers}K</p>
                 <p>{videoObject.date}</p>
-                </div>
-                <div className="icons__container">
-                    {
-                    
+            </div>
+            </div>
+            <div className="icons__container">
+
                     <BsFillBookmarkFill 
                     size={28} 
                     className="icons" 
                     onClick={() => dispatch({type: "CREATE__BOOKMARKVIDEOS", payload : videoObject})}
-                    />}
+                    />
+                
                     <FaRegClock 
                     size={28} 
                     className="icons" 
@@ -57,18 +61,18 @@ function VideoDetails() {
                     <MdPlaylistAdd 
                     size={28} 
                     className="icons" 
-                    onClick={() => {
+                    onClick={
+                        () => { 
                         open();
                         setVideo(videoObject)
-                    }}
+                    }
+                }
                     />
                     <Modal 
                     showModal={showModal} 
                     close={close}
                     video={video}
                     />
-                </div>
-                
             </div>
             </div>
         </div>

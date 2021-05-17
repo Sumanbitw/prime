@@ -14,11 +14,11 @@ function VideoCard({ item, vid }) {
                 </div>
             <div className="videoCard">
                 <div className="videocard__details">
-                <img src={item.image} className="videocard__image" alt=""/>
+                <img src={item.image}  alt=""/>
+                <p className="videocard__title">{item.title}</p>
+                <FiMoreVertical  size={28} className="icon"/>
                 </div>
             <div className="videocard__info">
-            <p className="videocard__title">{item.title}</p>
-            <p><FiMoreVertical  size={28} /></p>
             <p>{item.subscribers}K</p>
             <p>{item.date}</p>
             </div> 
