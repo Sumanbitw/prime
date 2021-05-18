@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useLibrary } from '../context/videoContext'
-import data from "../data/data"
-import PlaylistDetails from './PlaylistDetails'
+import { GoDeviceCameraVideo } from "react-icons/go"
+import { RiDeleteBin5Line } from "react-icons/ri"
 import "./playlist.css"
 
 function Playlist() {
@@ -15,9 +15,13 @@ function Playlist() {
                 return (
                     <div key={playlistObj.id} className="playlist__container">
                         <p>{playlistObj.name}</p>
+                        <GoDeviceCameraVideo size={28}/>
+                        <div className="btn__container">
                         <Link to={`/playlist/${playlistObj.id}`}>
-                        <button>View</button>
+                        <button className="playlist__btn">View</button>
                         </Link>
+                        <RiDeleteBin5Line size={25} className="playlistdetails__delete"/>
+                        </div>
                     </div>
                 )
             })}

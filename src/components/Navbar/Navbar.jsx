@@ -32,7 +32,7 @@ function Navbar() {
             'nav__menu'}>
                 <li 
                 className="nav__item">
-                <Link to="/home" 
+                <Link to="/" 
                   className="nav__links"
                   onClick={closeMobileMenu}
                   >
