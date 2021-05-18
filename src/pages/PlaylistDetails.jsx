@@ -11,12 +11,14 @@ function PlaylistDetails() {
     const desiredPlaylist = playlist.filter(playlistObj => playlistObj.id === playlistId)
     console.log({desiredPlaylist})
     return (
-        <div>
-            <div style={{paddingTop:"6rem"}}>
+        <div className="playlistdetails">
+            <div style={{paddingTop:"6rem"}} className="playlistdetails__container">
             {desiredPlaylist.length > 0 && desiredPlaylist[0].videos.map(item => {
                 return (
                     <Link to={`/videodetails/${item}`}>
-                    <li><img src={imageURL(item)}/></li>
+                    <div className="playlistdetails__image">
+                        <img src={imageURL(item)}/>
+                    </div>
                     </Link>
                 )
             })}

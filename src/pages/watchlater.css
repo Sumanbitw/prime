@@ -1,0 +1,68 @@
+.watchlater{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 5rem;
+    margin-left: 15%;
+    color: whitesmoke;
+    background-color: #1F2937;
+}
+
+.showwatchlatervideos{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 1rem;
+    margin: 2rem 0;
+    padding: 1.75rem 0;
+}
+
+.channelname{
+    padding: 0.4rem 0;
+}
+
+.showwatchlatervideos__container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+    margin: 0.5rem;
+    border: 1px solid gray;
+    position: relative;
+}
+
+.showwatchlatervideos__img{
+    width: 20rem;
+    height: 11.25rem;
+    object-fit: cover;
+}
+
+.showwatchlatervideos__details{
+    display: flex;
+}
+
+.avatar__image{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    margin: 0.4rem ;
+}
+
+.showwatchlatervideos__items{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.showwatchlatervideos__subs{
+    display: flex;
+    margin: 0.4rem 0;
+}
+
+.delete__btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #1F2937;
+    padding: 0.6rem;
+    border-radius: 100% ;
+}

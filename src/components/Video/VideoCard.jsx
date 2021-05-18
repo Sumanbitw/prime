@@ -7,11 +7,11 @@ import "./videocard.css"
 function VideoCard({ item, vid }) {
     return (
             <div className="videocard__container">
+                 <Link to={`/videodetails/${item.id}`}>
                 <div className="videocard__img">  
-                    <Link to={`/videodetails/${item.id}`}>
                         <img src={imageURL(vid)} className="image" alt="" />
-                    </Link>
                 </div>
+                </Link>
             <div className="videoCard">
                 <div className="videocard__details">
                 <img src={item.image}  alt=""/>
@@ -26,5 +26,4 @@ function VideoCard({ item, vid }) {
         </div>
     )
 }
-
 export default VideoCard

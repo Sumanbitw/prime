@@ -9,13 +9,9 @@ function Bookmark() {
 
     return (
         <div className="bookmark">
-            {/* <div className="bookmark__container"> */}
             {bookmarkVideos.map(item => (
-                <div className="bookmark__container"> 
                 <ShowBookmarkedItems item={item}/>
-                </div>
             ))}
-            {/* </div> */}
         </div>
     )
 }

@@ -1,0 +1,13 @@
+.playlist{
+    background-color: #1F2937;
+    position: relative;
+    top: 4rem;
+    margin-left: 15%;
+    height: 100%;
+}
+
+.playlist__container{
+    position: relative;
+    top: 2rem;
+    margin: 2rem;
+}

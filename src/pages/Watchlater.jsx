@@ -8,12 +8,10 @@ function WatchLater() {
     const {state: { watchLaterVideos }} = useLibrary()
     console.log({watchLaterVideos})
     return (
-        <div>
-            <div>
+        <div className="watchlater">
                 {watchLaterVideos.map(item => (
                     <ShowWatchLaterVideos item={item}/>
                 ))}
-            </div>
         </div>
     )
 }

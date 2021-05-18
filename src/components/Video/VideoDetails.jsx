@@ -37,7 +37,8 @@ function VideoDetails() {
             </div>
         <div className="text__container">
             <div>
-                <p>{videoObject.title}</p>
+                <img src={videoObject.image}/>
+                <span>{videoObject.title}</span>
                 <p>{videoObject.description}</p>
             <div className="text__align">
                 <p>{videoObject.views} views</p>

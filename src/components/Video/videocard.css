@@ -6,8 +6,9 @@
     align-items: center;
     justify-content: space-evenly;
     top: 5rem;
-    width: 100%;
+    /* width: 100%; */
     margin-left: 15%;
+    /* z-index: -1; */
 }
 
 .videocard__container{
@@ -36,6 +37,7 @@
     height: 11.20rem;
     width: 20rem;
     object-fit: cover;
+    cursor: pointer;
 
 }
 
