@@ -10,11 +10,7 @@ export default function VideoPlayer ({ children }) {
         videos : [],
         bookmarkVideos : [],
         watchLaterVideos : [],
-        playlist : [{
-            id : faker.datatype.uuid(),
-            name : "Playlist",
-            videos : [],
-        }]
+        playlist : []
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)
