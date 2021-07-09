@@ -1,17 +1,62 @@
 import React, { useState } from 'react'
 import { AiOutlineClose } from "react-icons/ai"
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useLibrary } from '../context/videoContext';
 import faker from "faker"
 import data from "../data/data"
 import "./modal.css";
+import axios from 'axios';
+import { useAuth } from '../context/authContext';
 
-function Modal({showModal, close, video}) {
+function Modal({showModal, close, videoObject}) {
     const [ newPlaylist, setNewPlaylist ] = useState("")
-    const { state: { playlist }, dispatch } = useLibrary()
+    const { state: { videos, playlist }, dispatch } = useLibrary()
+    const { user } = useAuth()
     const { videoId } = useParams()
-    console.log( videoId )
-    const videoObject = data.find(videoItem => videoItem === playlist)
+    const navigate = useNavigate()
+    console.log( videoObject.videoId )
+    
+
+    const addToPlaylist = async(videoItem) => {
+        setNewPlaylist("")
+        try{
+            const result = await axios.post(`https://primeapi-backend.herokuapp.com/playlists`,
+            {
+                user : user._id,
+                name : newPlaylist,
+                videos : [videoObject.videoId]
+            }
+            )
+            result.data.success && 
+            dispatch({ 
+                type : "ADD__PLAYLIST",
+                payload : {
+                    _id : result.data.playlist._id,
+                    name : newPlaylist,
+                    videos : videoObject.videoId
+                }
+            })  
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const handlePlaylist = async(playlistItem) => {
+        console.log(playlistItem, "clicked")
+        if(user){
+            try{
+                const result = await axios.post(`https://primeapi-backend.herokuapp.com/playlists/${playlistItem._id}`,
+                {
+                    videoId : videoObject.videoId
+                })
+                console.log(result)
+            }catch(error){
+                console.log(error)
+            }
+        }else{
+            navigate("/login")
+        }
+    }
    
     return (
         <div className={showModal ? "overlay" : "hide__modal"}>
@@ -24,32 +69,26 @@ function Modal({showModal, close, video}) {
                     <div className="modal__body">
                         <div className="modal__details">
                         </div>
-                        {playlist.map(videoItem => (
+                        {playlist && playlist.map(playlistItem => (
                             <div className="modal__videoItem">
-                            <p>{videoItem.name}</p>
-                            <button onClick={() => dispatch({ type:"ADD__PLAYLIST", payload:{videoId, id:videoItem.id}})}>Add</button>
+                            <p>{playlistItem.name}</p>
+                            <button onClick={() => handlePlaylist(playlistItem)}>Add</button>
                             </div>
-                        ))}
-                       
-                        
+                        ))} 
                     </div>
+
                     <div className="modal__footer">
                         <input 
                         type="text" 
                         placeholder="Enter playlist name" 
                         className="modal__input" 
+                        value={newPlaylist}
                         onChange={(e) => setNewPlaylist(e.target.value)}
                         />
-                        <button className="button" onClick={() => {
-                            dispatch({ 
-                                type: "CREATE__PLAYLIST", 
-                                payload: {id:faker.datatype.uuid(),name:newPlaylist,videos:[]}})
-                                setNewPlaylist("")
-                                }}
-                                >
-                                    Create
+                        <button className="buttons" onClick={() => addToPlaylist()}>
+                            Create
                         </button>
-                        <button className="button" onClick={close}>Cancel</button>
+                        <button className="buttons" onClick={close}>Cancel</button>
                     </div>
                 </div>
             </div>
