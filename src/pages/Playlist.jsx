@@ -13,11 +13,11 @@ function Playlist() {
         <div className="playlist">
             {playlist.map(playlistObj => {
                 return (
-                    <div key={playlistObj.id} className="playlist__container">
-                        <p>{playlistObj.name}</p>
+                    <div key={playlistObj._id} className="playlist__container">
+                        <p>{playlistObj && playlistObj.name}</p>
                         <GoDeviceCameraVideo size={28}/>
                         <div className="btn__container">
-                        <Link to={`/playlist/${playlistObj.id}`}>
+                        <Link to={`/playlist/${playlistObj._id}`}>
                         <button className="playlist__btn">View</button>
                         </Link>
                         <RiDeleteBin5Line size={25} className="playlistdetails__delete"/>

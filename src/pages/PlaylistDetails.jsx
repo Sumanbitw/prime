@@ -3,12 +3,13 @@ import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
 import { useLibrary } from '../context/videoContext'
 import { imageURL } from '../util/util';
+import PlaylistCard from './PlaylistCard';
 import "./playlist.css"
 
 function PlaylistDetails() {
     const { playlistId } = useParams()
     const { state: { playlist }} = useLibrary();
-    const desiredPlaylist = playlist.filter(playlistObj => playlistObj.id === playlistId)
+    const desiredPlaylist = playlist.filter(playlistObj => playlistObj._id === playlistId)
     console.log({desiredPlaylist})
     return (
         <div className="playlistdetails">
@@ -16,9 +17,7 @@ function PlaylistDetails() {
             {desiredPlaylist.length > 0 && desiredPlaylist[0].videos.map(item => {
                 return (
                     <div className="playlistdetails__image">
-                        <Link to={`/videodetails/${item}`}>
-                        <img src={imageURL(item)} />
-                        </Link>
+                        <PlaylistCard item={item}/>
                     </div>
                 )
             })}

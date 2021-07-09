@@ -11,7 +11,7 @@ function ShowBookmarkedItems({item}) {
         <div className="showbookmark">
             <div className="showbookmark__container">
                 <Link to={`/videoDetails/${item.id}`}>
-                <img src={imageURL(item.id)} className="showbookmark__img"/>
+                <img src={imageURL(item._id)} className="showbookmark__img" alt=""/>
                 </Link>
                 <RiDeleteBin5Fill size={22} className="delete__btn" onClick={() => dispatch({ type: "REMOVE", payload : item})}/>
                 <div className="showbookmark__details">
