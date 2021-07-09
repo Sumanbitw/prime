@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import { BiBookmark } from "react-icons/bi"
-import  { BsFillBookmarkFill } from "react-icons/bs"
+import  { BsFillBookmarkFill, BsBookmark } from "react-icons/bs"
 // import axios from "axios"
 import { MdPlaylistAdd } from "react-icons/md"
 import { FaRegClock } from "react-icons/fa"
@@ -18,17 +18,18 @@ function VideoDetails() {
     const [video, setVideo] = useState({})
     const open = () => setShowModal(true)
     const close = () => setShowModal(false)
+    const { state : { videos }} = useLibrary()
     
     const { videoId } = useParams() 
     
 
-    const videoObject =  data.find(videoItem => videoItem.id === videoId )
-
+    const videoObject = videos.videos && videos.videos.find(videoItem => videoItem._id === videoId )
+    console.log(videoObject)
     return (
         <div className="videodetails">
             <div className="video">
             <div className="video__container">
-                <ReactPlayer url={videoURL(videoObject.id)} 
+                <ReactPlayer url={videoURL(videoObject && videoObject.videoId)} 
                 className="react__player"
                 playing
                 controls={false}
@@ -37,18 +38,18 @@ function VideoDetails() {
             </div>
         <div className="text__container">
             <div>
-                <img src={videoObject.image}/>
-                <span>{videoObject.title}</span>
-                <p>{videoObject.description}</p>
+                <img src={videoObject && videoObject.imageURL} alt=""/>
+                <span>{videoObject && videoObject.title}</span>
+                <p>{videoObject && videoObject.description}</p>
             <div className="text__align">
-                <p>{videoObject.views} views</p>
-                <p>{videoObject.subscribers}K</p>
-                <p>{videoObject.date}</p>
+                <p>{videoObject && videoObject.views} views</p>
+                <p>{videoObject && videoObject.subscribers}K</p>
+                <p>{videoObject && videoObject.date}</p>
             </div>
             </div>
             <div className="icons__container">
 
-                    <BsFillBookmarkFill 
+                    <BsBookmark 
                     size={28} 
                     className="icons" 
                     onClick={() => dispatch({type: "CREATE__BOOKMARKVIDEOS", payload : videoObject})}
@@ -73,6 +74,7 @@ function VideoDetails() {
                     showModal={showModal} 
                     close={close}
                     video={video}
+                    videoObject={videoObject}
                     />
             </div>
             </div>
