@@ -29,7 +29,7 @@ function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/watch-later" className="link">
+                    <Link to="/watchlater" className="link">
                     <MdWatchLater size={24}/>
                     <span>Watch Later</span>
                     </Link>

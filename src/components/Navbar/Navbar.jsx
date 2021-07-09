@@ -3,12 +3,16 @@ import { Link } from "react-router-dom"
 import { FaPlayCircle } from "react-icons/fa"
 import { FaTimes, FaBars } from "react-icons/fa"
 import "./navbar.css"
+import { useAuth } from '../../context/authContext'
+
 
 function Navbar() {
     const [click, setClick] = useState(false)
-    // const [button, setButton] = useState(true)
+    const { user, logout } = useAuth()
   
-    const handleClick = () => setClick(prev => !prev)
+    const handleClick = () => {
+      setClick(prev => !prev)
+    }
     const closeMobileMenu = () => setClick(false)
     return (
         <nav className="navbar">
@@ -53,7 +57,7 @@ function Navbar() {
                   <Link to="/login"
                   className="nav__links"
                   onClick={closeMobileMenu}>
-                  Login
+                    {user ? "Logout" : "Login"}
                   </Link>
                 </li>
                 

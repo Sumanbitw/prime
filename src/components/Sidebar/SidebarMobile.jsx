@@ -25,7 +25,7 @@ function SidebarMobile() {
             </Link>
             </div>
             <div className="sidebarmobile__item">
-            <Link to="/watc-later" className="links">
+            <Link to="/watchlater" className="links">
             <MdWatchLater size={30}/>
             </Link>
             </div>
