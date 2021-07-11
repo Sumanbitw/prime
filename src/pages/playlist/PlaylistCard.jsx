@@ -1,6 +1,6 @@
 import React from 'react'
-import { useLibrary } from '../context/videoContext'
-import { imageURL } from '../util/util'
+import { useLibrary } from '../../context/videoContext'
+import { imageURL } from '../../util/util'
 import { Link } from "react-router-dom"
 
 function PlaylistCard({item}) {

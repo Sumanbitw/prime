@@ -33,7 +33,7 @@ export const data = [
     categoryId : "3",
     image:"https://yt3.ggpht.com/ytc/AAUvwnjn3qOy6HCjMDhQExDZFX-X2fHSZZOdF0apkIlX=s88-c-k-c0x00ffffff-no-rj",
     title:"Leg Spin Masterclass with Shane Warne and Rashid Khan | The Big Break",
-    description:"The greatest leg spinner, Shane Warne, and the best T20 leg spinner, Rashid Khan, grace the MCG to give you a masterclass on leg spin.",
+    description:" ",
     subscribers:"89.9",
     views:"3",
     date :"Dec 30 2019",

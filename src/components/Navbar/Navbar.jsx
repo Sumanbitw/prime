@@ -14,6 +14,7 @@ function Navbar() {
       setClick(prev => !prev)
     }
     const closeMobileMenu = () => setClick(false)
+
     return (
         <nav className="navbar">
          <div className="navbar__container container">
@@ -53,13 +54,23 @@ function Navbar() {
                   </Link>
                 </li>
                 
-                <li className="nav__item">
-                  <Link to="/login"
-                  className="nav__links"
-                  onClick={closeMobileMenu}>
-                    {user ? "Logout" : "Login"}
-                  </Link>
-                </li>
+                {
+                  !user 
+                  ? <li className="nav__item">
+                    <Link to="/login"
+                    className="nav__links"
+                    onClick={closeMobileMenu}>
+                    Login
+                    </Link>
+                    </li>
+                  : <li className= "nav__item">
+                    <Link to="/login"
+                    className="nav__links"
+                    onClick={logout}>
+                    Logout
+                    </Link>
+                    </li>
+                }
                 
                 <li className="nav__item">
                   <Link to="/" 

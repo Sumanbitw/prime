@@ -5,7 +5,7 @@ import  { BsFillBookmarkFill, BsBookmark } from "react-icons/bs"
 // import axios from "axios"
 import { MdPlaylistAdd } from "react-icons/md"
 import { FaRegClock } from "react-icons/fa"
-import Modal from "../../pages/Modal"
+import Modal from "../../pages/modal/Modal"
 import "./video.css"
 import { useLibrary } from '../../context/videoContext'
 import ReactPlayer from 'react-player'

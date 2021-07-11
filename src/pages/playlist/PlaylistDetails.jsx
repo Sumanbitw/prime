@@ -1,8 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
-import { useLibrary } from '../context/videoContext'
-import { imageURL } from '../util/util';
+import { useLibrary } from '../../context/videoContext'
+import { imageURL } from '../../util/util';
 import PlaylistCard from './PlaylistCard';
 import "./playlist.css"
 

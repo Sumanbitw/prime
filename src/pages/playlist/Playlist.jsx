@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useLibrary } from '../context/videoContext'
+import { useLibrary } from '../../context/videoContext'
 import { GoDeviceCameraVideo } from "react-icons/go"
 import { RiDeleteBin5Line } from "react-icons/ri"
 import "./playlist.css"
@@ -17,7 +17,7 @@ function Playlist() {
                         <p>{playlistObj && playlistObj.name}</p>
                         <GoDeviceCameraVideo size={28}/>
                         <div className="btn__container">
-                        <Link to={`/playlist/${playlistObj._id}`}>
+                        <Link to={`/playlist/${playlistObj?._id}`}>
                         <button className="playlist__btn">View</button>
                         </Link>
                         <RiDeleteBin5Line size={25} className="playlistdetails__delete"/>

@@ -33,6 +33,17 @@ export const reducer = ( state, action ) => {
                    }
                ]
            }
+        case "REMOVE__BOOKMARK__VIDEOS": 
+           return {
+               ...state,
+               bookmarkVideos : [...state.bookmarkVideos.filter(item => item._id !== action.payload._id)]
+           }
+        
+        case "REMOVE__WATCHLATER__VIDEOS": 
+           return {
+               ...state,
+               watchLaterVideos : [...state.watchLaterVideos.filter(item => item._id !== action.payload._id)]
+           }
         default :
          return state
     }

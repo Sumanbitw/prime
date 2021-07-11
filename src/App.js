@@ -7,10 +7,10 @@ import SidebarMobile from './components/Sidebar/SidebarMobile';
 import { Routes, Route } from "react-router-dom";
 import Video from "./components/Video/Video"
 import VideoDetails from './components/Video/VideoDetails';
-import Bookmark from './pages/Bookmark';
-import WatchLater from './pages/Watchlater';
-import Playlist from './pages/Playlist';
-import PlaylistDetails from './pages/PlaylistDetails';
+import Bookmark from './pages/bookmark/Bookmark';
+import WatchLater from './pages/watch-later/Watchlater';
+import Playlist from './pages/playlist/Playlist';
+import PlaylistDetails from './pages/playlist/PlaylistDetails';
 import Login from "./pages/login/Login"
 import { useLibrary } from "./context/videoContext";
 import Signup from "./pages/signup/Signup";

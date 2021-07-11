@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { AiOutlineClose } from "react-icons/ai"
 import { useNavigate, useParams } from 'react-router';
-import { useLibrary } from '../context/videoContext';
+import { useLibrary } from '../../context/videoContext';
 import faker from "faker"
-import data from "../data/data"
+import data from "../../data/data"
 import "./modal.css";
 import axios from 'axios';
-import { useAuth } from '../context/authContext';
+import { useAuth } from '../../context/authContext';
 
 function Modal({showModal, close, videoObject}) {
     const [ newPlaylist, setNewPlaylist ] = useState("")
@@ -14,8 +14,6 @@ function Modal({showModal, close, videoObject}) {
     const { user } = useAuth()
     const { videoId } = useParams()
     const navigate = useNavigate()
-    console.log( videoObject.videoId )
-    
 
     const addToPlaylist = async(videoItem) => {
         setNewPlaylist("")
@@ -71,7 +69,7 @@ function Modal({showModal, close, videoObject}) {
                         </div>
                         {playlist && playlist.map(playlistItem => (
                             <div className="modal__videoItem">
-                            <p>{playlistItem.name}</p>
+                            <p>{playlistItem && playlistItem.name}</p>
                             <button onClick={() => handlePlaylist(playlistItem)}>Add</button>
                             </div>
                         ))} 

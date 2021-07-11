@@ -1,6 +1,6 @@
 import React from 'react'
-import { useLibrary } from '../../src/context/videoContext'
-import ShowWatchLaterVideos from "../pages/ShowWatchLaterVideos"
+import { useLibrary } from '../../context/videoContext'
+import ShowWatchLaterVideos from "./ShowWatchLaterVideos"
 import "./watchlater.css"
 
 function WatchLater() {
