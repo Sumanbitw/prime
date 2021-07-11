@@ -14,7 +14,7 @@ export const reducer = ( state, action ) => {
         case "ADD__OR__REMOVE__PLAYLIST":
             const playlist = state.playlist.find(
                 playlistItem => playlistItem._id === action.payload.playlistId)
-            const isVideoInPlaylist = playlist.videos.find(
+            const isVideoInPlaylist = playlist && playlist.videos.find(
                 videoItem => videoItem._id === action.payload.videoId)
             return isVideoInPlaylist 
             ? removeVideFromPlaylist(state, action.payload.videoId, action.payload.playlistId)
@@ -44,6 +44,13 @@ export const reducer = ( state, action ) => {
                ...state,
                watchLaterVideos : [...state.watchLaterVideos.filter(item => item._id !== action.payload._id)]
            }
+
+        case "DELETE__PLAYLIST":
+            return{
+                ...state,
+                playlist : [...state.playlist.filter(item => item._id === action.payload)]
+            }
+
         default :
          return state
     }

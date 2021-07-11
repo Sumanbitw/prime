@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
     <Navbar/>
-    {user && <Sidebar/>}
+    <Sidebar/>
     <SidebarMobile/>
     <Routes>
       <Route path="/" element={<Video/>}/>

@@ -72,13 +72,13 @@ function Navbar() {
                     </li>
                 }
                 
-                <li className="nav__item">
+                {/* <li className="nav__item">
                   <Link to="/" 
                   className="nav__links"
                   onClick={closeMobileMenu}>
                     <button>Join now</button>
                   </Link>
-                </li>
+                </li> */}
             </ul>  
          </div>
        </nav>

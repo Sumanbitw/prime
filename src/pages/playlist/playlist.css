@@ -15,51 +15,70 @@
     top: 2rem;
     margin: 2rem;
     padding: 1rem;
-    border: 2px solid blueviolet;
+    border: 2px solid #f00946;
     padding: 1rem 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: whitesmoke;
 }
 
 .btn__container{
     margin-top: 1rem;
 }
- .playlist__btn{
-     padding: 0.4rem 1.5rem;
- }
+.playlist__btn{
+    padding: 0.4rem 1.5rem;
+    cursor: pointer;
+}
 
- .playlistdetails{
-     background-color: #1F2937;
-     position: relative;
-     top: 5rem;
-     margin-left: 15%;
-     height: 100vh;
- }
- .playlistdetails__container{
-     position: relative;
-     top: 1rem;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
- }
+.playlistdetails{
+    background-color: #1F2937;
+    position: relative;
+    top: 5rem;
+    margin-left: 15%;
+    height: 100vh;
+}
+.playlistdetails__container{
+    position: relative;
+    top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
- .playlistdetails__image{
-    border: 2px solid black;
+.playlistdetails__image{
+    border: 1px solid black;
     width: 80%;
     margin-bottom:1rem;
     border-radius: 8px;
- }
+    box-shadow: 1px 1px 3px 1px #f00946;
+}
 
- .playlistdetails__image img{
-     width: 20rem;
-     height: 11.25rem;
-     object-fit: cover;
-     border-radius: 8px;
- }
+.playlistdetails__image img{
+    width: 20rem;
+    height: 11.25rem;
+    object-fit: cover;
+    border-radius: 8px;
+}
 
- .playlistdetails__delete{
-     position: absolute;
-     top: 0;
-     right: 0;
- }
+.playlistdetails__delete{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: #1F2937;
+    border-radius:100% ;
+}
+.playlist__card{
+    display: flex;
+    justify-content: space-between;
+}
+.playlist__card__delete__btn{
+    color: whitesmoke;
+    background-color: black;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: auto 0;
+    cursor: pointer;
+}

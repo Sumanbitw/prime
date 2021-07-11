@@ -40,14 +40,15 @@ function Modal({showModal, close, videoObject}) {
     }
 
     const handlePlaylist = async(playlistItem) => {
-        console.log(playlistItem, "clicked")
+        console.log(playlistItem)
         if(user){
             try{
                 const result = await axios.post(`https://primeapi-backend.herokuapp.com/playlists/${playlistItem._id}`,
                 {
-                    videoId : videoObject.videoId
+                    videoId : videoObject._id
                 })
                 console.log(result)
+                dispatch({ type : "ADD__OR__REMOVE__PLAYLIST", payload : {videoId : videoObject._id, playlistId : playlistItem._id }})
             }catch(error){
                 console.log(error)
             }

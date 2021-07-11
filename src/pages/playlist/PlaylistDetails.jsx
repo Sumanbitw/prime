@@ -10,7 +10,7 @@ function PlaylistDetails() {
     const { playlistId } = useParams()
     const { state: { playlist }} = useLibrary();
     const desiredPlaylist = playlist.filter(playlistObj => playlistObj._id === playlistId)
-    console.log({desiredPlaylist})
+    
     return (
         <div className="playlistdetails">
             <div  className="playlistdetails__container">

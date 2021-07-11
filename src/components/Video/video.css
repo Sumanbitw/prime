@@ -26,24 +26,35 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    border: 2px solid black;
     margin: 0.5rem 0;
+    color: whitesmoke;
     padding: 1rem;
 }
+.videodetails__image{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-top: 1rem;
+}
+.text__container span{
+    position: relative;
+    top: -1rem;
+}
 
-.text__align{
+.text__container p{
+    width: 70%;
+    margin-left: 4rem;
+    line-height: 1.5;
+}
+.text__align span{
+    position: relative;
+    top: 0.3rem;
+    margin-left: 3rem;
+}
+
+.icons__container{
     display: flex;
-    align-items: center;
-}
-
-.text__align p{
-    margin: 0 1rem;
-}
-
-.icons__container {
-    margin: 1rem;
-}
-
-.icons{
-    margin: 0 1rem;
+    align-items: flex-end;
+    gap: 2rem;
+    cursor: pointer;
 }
