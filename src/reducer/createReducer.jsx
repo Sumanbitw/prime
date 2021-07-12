@@ -1,3 +1,32 @@
+const addVideoInPlaylist = (state, videoId, playlistId) => ({
+    ...state,
+    playlist : state.playlist.map(
+        playlistItem => {
+            return playlistItem._id === playlistId
+    
+    ? {
+        ...playlistItem,
+        videos : [...playlistItem.videos, videoId]
+    }
+    : playlistItem
+}
+)
+})
+
+const removeVideoFromPlaylist = ( state, videoId, playlistId ) => ({
+...state,
+playlist : state.playlist.map(playlistItem => {
+        return playlistItem._id === playlistId
+        ? {
+            ...playlistItem,
+            videos : playlistItem.videos.filter(videoItem =>
+                videoItem._id !== videoId)
+        }
+        : playlistItem
+    })
+
+}) 
+
 export const reducer = ( state, action ) => {
     switch(action.type){
         case "SET__VIDEOS":
@@ -14,10 +43,11 @@ export const reducer = ( state, action ) => {
         case "ADD__OR__REMOVE__PLAYLIST":
             const playlist = state.playlist.find(
                 playlistItem => playlistItem._id === action.payload.playlistId)
+            
             const isVideoInPlaylist = playlist && playlist.videos.find(
-                videoItem => videoItem._id === action.payload.videoId)
+                videoItem => videoItem?._id === action.payload.videoId)
             return isVideoInPlaylist 
-            ? removeVideFromPlaylist(state, action.payload.videoId, action.payload.playlistId)
+            ? removeVideoFromPlaylist(state, action.payload.videoId, action.payload.playlistId)
             : addVideoInPlaylist(state, action.payload.videoId, action.payload.playlistId)
         
 
@@ -33,6 +63,15 @@ export const reducer = ( state, action ) => {
                    }
                ]
            }
+        case "UPDATE_PLAYLIST_NAME":
+        return {
+            ...state,
+            playlists: state.playlists.map((playlistItem) =>
+            playlistItem._id === action.payload._id
+                ? { ...playlistItem, name: action.payload.name }
+                : playlistItem
+            ),
+        };
         case "REMOVE__BOOKMARK__VIDEOS": 
            return {
                ...state,
@@ -48,7 +87,7 @@ export const reducer = ( state, action ) => {
         case "DELETE__PLAYLIST":
             return{
                 ...state,
-                playlist : [...state.playlist.filter(item => item._id === action.payload)]
+                playlist : [...state.playlist.filter(item => item._id !== action.payload)]
             }
 
         default :
@@ -56,31 +95,3 @@ export const reducer = ( state, action ) => {
     }
 }
 
-const addVideoInPlaylist = (state, videoId, playlistId) => ({
-        ...state,
-        playlist : state.playlist.map(
-            playlistItem => {
-                return playlistItem._id === playlistId
-        
-        ? {
-            ...playlistItem,
-            videos : [...playlistItem.videos, videoId]
-        }
-        : playlistItem
-    }
-    )
-})
-
-const removeVideFromPlaylist = ( state, videoId, playlistId ) => ({
-    ...state,
-    playlist : state.playist.map(playlistItem => {
-            return playlistItem._id === playlistId
-            ? {
-                ...playlistItem,
-                videos : playlistItem.videos.filter(videoItem =>
-                    videoItem._id !== videoId)
-            }
-            : playlistItem
-        })
-
-}) 

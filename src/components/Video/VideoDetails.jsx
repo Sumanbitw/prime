@@ -128,11 +128,3 @@ function VideoDetails() {
 }
 
 export default VideoDetails
-
-{/* toast({
-                    title: "You need to sign in",
-                    description: "Sign in is required",
-                    status: "success",
-                    duration: 9000,
-                    isClosable: true,
-                  })} */}

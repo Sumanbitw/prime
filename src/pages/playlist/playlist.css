@@ -69,6 +69,16 @@
     background-color: #1F2937;
     border-radius:100% ;
 }
+
+.playlist__edit{
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    cursor: pointer;
+    background-color: #1F2937;
+    border-radius:100% ;
+    color: whitesmoke;
+}
 .playlist__card{
     display: flex;
     justify-content: space-between;

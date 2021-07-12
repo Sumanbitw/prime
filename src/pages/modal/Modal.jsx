@@ -15,23 +15,24 @@ function Modal({showModal, close, videoObject}) {
     const { videoId } = useParams()
     const navigate = useNavigate()
 
-    const addToPlaylist = async(videoItem) => {
+    const addToPlaylist = async() => {
         setNewPlaylist("")
         try{
             const result = await axios.post(`https://primeapi-backend.herokuapp.com/playlists`,
             {
                 user : user._id,
                 name : newPlaylist,
-                videos : [videoObject.videoId]
+                videos : [videoObject._id]
             }
             )
+            console.log(result)
             result.data.success && 
             dispatch({ 
                 type : "ADD__PLAYLIST",
                 payload : {
                     _id : result.data.playlist._id,
                     name : newPlaylist,
-                    videos : videoObject.videoId
+                    videoId : videoObject._id
                 }
             })  
         }catch(error){
@@ -84,7 +85,7 @@ function Modal({showModal, close, videoObject}) {
                         value={newPlaylist}
                         onChange={(e) => setNewPlaylist(e.target.value)}
                         />
-                        <button className="buttons" onClick={() => addToPlaylist()}>
+                        <button className="buttons" onClick={addToPlaylist}>
                             Create
                         </button>
                         <button className="buttons" onClick={close}>Cancel</button>

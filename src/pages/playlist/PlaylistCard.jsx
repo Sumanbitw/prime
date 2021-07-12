@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
 import { useLibrary } from '../../context/videoContext'
 import { imageURL } from '../../util/util'
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { RiDeleteBin5Line } from "react-icons/ri"
 import "./playlist.css"
 import axios from 'axios'
+import { useAuth } from '../../context/authContext'
 
 function PlaylistCard({item}) {
     const { state : {videos, playlist }, dispatch} = useLibrary()
+    const { user } = useAuth()
+    const navigate = useNavigate()
     
     const video = videos.videos && videos.videos.find(videoItem => videoItem._id === item)
     
@@ -15,16 +18,21 @@ function PlaylistCard({item}) {
     
     
     const handleVideoDelete = async () => {
-        try{
-            const response = await axios.post(`https://primeapi-backend.herokuapp.com/playlists/${playlistId}`, 
-            {
-                videoId : video._id
-            })
-            console.log(response)
-            dispatch({ type : "ADD__OR__REMOVE__PLAYLIST", payload : {videoId : video._id, playlistId : playlistId }})
-        }catch(error){
-            console.log(error)
-        }    
+        if(user){
+            try{
+                const response = await axios.post(`https://primeapi-backend.herokuapp.com/playlists/${playlistId}`, 
+                {
+                    videoId : video._id
+                })
+                console.log(response)
+                dispatch({ type : "ADD__OR__REMOVE__PLAYLIST", payload : {videoId : video._id, playlistId : playlistId }})
+            }catch(error){
+                console.log(error)
+            } 
+        }else{
+            navigate("/login")
+        }
+           
     }
 
     return (

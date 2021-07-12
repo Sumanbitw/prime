@@ -5,6 +5,7 @@
     top: 5rem;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid whitesmoke;
 }
 .video{
     position: relative;
