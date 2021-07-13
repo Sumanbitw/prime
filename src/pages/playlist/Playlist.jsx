@@ -24,9 +24,9 @@ function Playlist() {
     }
     return (
         <div className="playlist">
-            {playlist.map(playlistObj => {
+            {playlist && playlist.map(playlistObj => {
                 return (
-                    <div key={playlistObj._id} className="playlist__container">
+                    <div key={playlistObj?._id} className="playlist__container">
                         <p>{playlistObj && playlistObj.name}</p>
                         <GoDeviceCameraVideo size={28}/>
                         <div className="btn__container">
