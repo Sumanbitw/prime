@@ -16,6 +16,7 @@ import { useLibrary } from "./context/videoContext";
 import Signup from "./pages/signup/Signup";
 import { PrivateRoute } from "./protectedRoute/PrivateRoute";
 import { useAuth } from "./context/authContext";
+import History from "./pages/history/History";
 
 
 function App() {
@@ -25,29 +26,26 @@ function App() {
   useEffect(() => {
     (async function getVideo(){
       const response = await axios.get("https://primeapi-backend.herokuapp.com/videos")
-      console.log(response.data)
       const videos = response.data
       dispatch({ type : "SET__VIDEOS", payload : { videos : videos }})
     })()  
     return () => {}
   }, [dispatch])
 
-  useEffect(() => {
-    (async function getPlaylists(){
-      const response = await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
-      console.log(response.data)
-      const playlist = response.data.playlist
-      dispatch({ type : "CREATE__PLAYLIST", payload : playlist })
-    })()  
-    return () => {}
-  }, [dispatch, user])
-
+  // useEffect(() => {
+  //   (async function getPlaylists(){
+  //     const response = await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
+  //     const playlist = response.data.playlist
+  //     dispatch({ type : "CREATE__PLAYLIST", payload : playlist })
+  //   })()  
+  //   return () => {}
+  // }, [])
 
 
   return (
     <div className="App">
     <Navbar/>
-    <Sidebar/>
+    {user && <Sidebar/>}
     <SidebarMobile/>
     <Routes>
       <Route path="/" element={<Video/>}/>
@@ -55,6 +53,7 @@ function App() {
       <PrivateRoute path="/bookmark" element={<Bookmark/>}/>
       <PrivateRoute path="/watchlater" element={<WatchLater/>} />
       <PrivateRoute path="/playlist" element={<Playlist/>}/>
+      <PrivateRoute path="/history" element={<History/>}/>
       <PrivateRoute path="/playlist/:playlistId" element={<PlaylistDetails/>} />
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>  

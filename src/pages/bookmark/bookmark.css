@@ -65,3 +65,17 @@
     padding: 0.6rem;
     border-radius: 100% ;
 }
+
+.container_b {
+    margin-top: 6rem;
+}
+
+.container_b p{
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.button_bookmark{
+    padding: 0.8rem 0.7rem;
+}

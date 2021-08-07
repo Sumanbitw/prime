@@ -1,21 +1,25 @@
 const addVideoInPlaylist = (state, videoId, playlistId) => ({
     ...state,
-    playlist : state.playlist.map(
+    playlist : state?.playlist?.map(
         playlistItem => {
             return playlistItem._id === playlistId
     
     ? {
         ...playlistItem,
-        videos : [...playlistItem.videos, videoId]
+        videos : playlistItem.videos.concat(videoId)
     }
     : playlistItem
 }
 )
+    // playlist : {
+    //     ...state.playlist,
+    //     videos : state.playlist.videos.concat(videoId)
+    // }
 })
 
 const removeVideoFromPlaylist = ( state, videoId, playlistId ) => ({
 ...state,
-playlist : state.playlist.map(playlistItem => {
+playlist : state?.playlist?.map(playlistItem => {
         return playlistItem._id === playlistId
         ? {
             ...playlistItem,
@@ -24,7 +28,10 @@ playlist : state.playlist.map(playlistItem => {
         }
         : playlistItem
     })
-
+    // playlist : {
+    //     ...state.playlist,
+    //     videos : state.playlist.videos.filter(videoItem => videoItem._id !== playlistId)
+    // }
 }) 
 
 export const reducer = ( state, action ) => {
@@ -32,23 +39,52 @@ export const reducer = ( state, action ) => {
         case "SET__VIDEOS":
             return { ...state, videos : action.payload }
         case "CREATE__BOOKMARKVIDEOS":
-            return { ...state, bookmarkVideos : [ ...state.bookmarkVideos, action.payload ]}
+            return { ...state, bookmarkVideos : action.payload }
 
         case "CREATE__WATCHLATERVIDEOS":
-            return { ...state, watchLaterVideos : [ ...state.watchLaterVideos, action.payload ]}
+            return { ...state, watchLaterVideos : action.payload }
         
         case "CREATE__PLAYLIST": 
             return {...state, playlist : state.playlist.concat(action.payload)}
 
-        case "ADD__OR__REMOVE__PLAYLIST":
-            const playlist = state.playlist.find(
-                playlistItem => playlistItem._id === action.payload.playlistId)
+        case "CREATE__HISTORY":
+            return {...state, history : action.payload}    
+
+        case "ADD__VIDEOS__FROM__PLAYLIST":
+            console.log({payload : action.payload})
+            return {
+                ...state,
+                playlist : state.playlist.map(playlistObj =>
+                    playlistObj._id === action.payload.playlistId
+                    ? {
+                        ...playlistObj,
+                        videos : action.payload.videos
+                    }
+                    : playlistObj
+                    )
+                
+            }
+        case "REMOVE__VIDEOS__FROM__PLAYLIST":
+            return {
+                ...state,
+                playlist : state.playlist.map(playlistItem => 
+                    playlistItem._id === action.payload.playlistId
+                    ? {
+                        ...playlistItem,
+                        videos : action.payload.videos
+                    }
+                    : playlistItem
+                )
+            }
+        
+            // const playlists = state?.playlist?.find(
+            //     playlistItem => playlistItem._id === action.payload.playlistId)
             
-            const isVideoInPlaylist = playlist && playlist.videos.find(
-                videoItem => videoItem?._id === action.payload.videoId)
-            return isVideoInPlaylist 
-            ? removeVideoFromPlaylist(state, action.payload.videoId, action.payload.playlistId)
-            : addVideoInPlaylist(state, action.payload.videoId, action.payload.playlistId)
+            // const videoId = action.payload.videos.find(videoItem => videoItem)
+            // const isVideoInPlaylist = playlists && playlists.videos.includes(action.payload.videoId)
+            // return isVideoInPlaylist 
+            // ? removeVideoFromPlaylist(state, action.payload.videoId, action.payload.playlistId)
+            // : addVideoInPlaylist(state, action.payload.videoId, action.payload.playlistId)
         
 
         case "ADD__PLAYLIST":
@@ -59,7 +95,7 @@ export const reducer = ( state, action ) => {
                    {
                        _id : action.payload._id,
                        name : action.payload.name,
-                       videos : [action.payload.videoId]
+                       videos : action.payload.videos
                    }
                ]
            }
@@ -72,22 +108,42 @@ export const reducer = ( state, action ) => {
                 : playlistItem
             ),
         };
+
+        case "ADD__TO__HISTORY":
+            return {
+                ...state,
+                history : state.history.unshift(action.payload)
+            }
         case "REMOVE__BOOKMARK__VIDEOS": 
            return {
                ...state,
-               bookmarkVideos : [...state.bookmarkVideos.filter(item => item._id !== action.payload._id)]
+               bookmarkVideos : state.bookmarkVideos.video.filter(item => item._id !== action.payload._id)
            }
         
         case "REMOVE__WATCHLATER__VIDEOS": 
            return {
                ...state,
-               watchLaterVideos : [...state.watchLaterVideos.filter(item => item._id !== action.payload._id)]
+               watchLaterVideos : state.watchLaterVideos.watchlaterVideo.filter(item => item._id !== action.payload._id)
            }
-
+        
+        case "REMOVE__VIDEOS__FROM__HISTORY":
+            return {
+                ...state,
+                history : state.history.video.filter(videoItem => videoItem._id !== action.payload._id )
+            }   
         case "DELETE__PLAYLIST":
             return{
                 ...state,
-                playlist : [...state.playlist.filter(item => item._id !== action.payload)]
+                playlist : [...state.playlist.filter(item => item?._id !== action.payload)]
+            }
+        case "DELETE__VIDEOS__FROM__PLAYLIST":
+            return{
+                ...state,
+                playlist : state.playlist.find(videoItem => 
+                    videoItem._id === action.payload.playlistId
+                    ? {...videoItem, videos : videoItem.videos.filter(video => video._id !== action.payload.videoId)}
+                    : videoItem
+                    )
             }
 
         default :

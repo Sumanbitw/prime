@@ -56,6 +56,6 @@
 .icons__container{
     display: flex;
     align-items: flex-end;
-    gap: 2rem;
+    gap: 1rem;
     cursor: pointer;
 }

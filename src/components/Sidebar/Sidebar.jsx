@@ -2,7 +2,8 @@ import React from 'react'
 import { IoHome } from "react-icons/io5"
 import { RiPlayListFill } from "react-icons/ri"
 import { FaBookmark } from "react-icons/fa"
-import { MdWatchLater, MdLibraryAdd } from "react-icons/md"
+import { MdWatchLater } from "react-icons/md"
+// import { AiOutlineHistory } from "react-icons/ai"
 import { Link } from 'react-router-dom'
 import "./sidebar.css"
 
@@ -35,10 +36,10 @@ function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/library" className="link">
-                    <MdLibraryAdd size={24}/>
-                    <span>Library</span>
-                    </Link>
+                    {/* <Link to="/history" className="link">
+                    <AiOutlineHistory size={24}/>
+                    <span>History</span>
+                    </Link> */}
                 </li>
             </ul>
         </div>

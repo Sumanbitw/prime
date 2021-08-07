@@ -92,3 +92,17 @@
     margin: auto 0;
     cursor: pointer;
 }
+
+.container_p {
+    margin-top: 6rem;
+}
+
+.container_p p{
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.button_playlist{
+    padding: 0.8rem 0.7rem;
+}

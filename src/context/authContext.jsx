@@ -7,11 +7,11 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("auth-user"))
+    JSON.parse(localStorage.getItem("authUser"))
   );
 
   const [token, setToken] = useState(
-    JSON.parse(localStorage.getItem("auth-token"))
+    JSON.parse(localStorage.getItem("authToken"))
   );
 
   if (token) {
@@ -43,8 +43,8 @@ export const AuthProvider = ({ children }) => {
         setUser(user);
         setToken(token);
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        localStorage?.setItem("auth-user", JSON.stringify(user));
-        localStorage?.setItem("auth-token", JSON.stringify(token));
+        localStorage?.setItem("authUser", JSON.stringify(user));
+        localStorage?.setItem("authToken", JSON.stringify(token));
       }
       return { user, message, success };
     } catch (error) {

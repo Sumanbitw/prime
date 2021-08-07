@@ -6,7 +6,7 @@ import "./videocard.css"
 
 function VideoCard({ item, vid }) {
     return (
-            <div className="videocard__container">
+            <div className="videocard__container" key={item._id}>
                  <Link to={`/videodetails/${item._id}`}>
                 <div className="videocard__img">  
                         <img src={imageURL(vid)} className="image" alt="" />
