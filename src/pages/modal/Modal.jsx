@@ -86,11 +86,11 @@ function Modal({ showModal, close, videoObject }) {
               playlist.map((playlistItem) => (
                 <div className="modal__videoItem">
                   <p>{playlistItem && playlistItem.name}</p>
-                  {!isVideoInPlaylist(playlistItem._id, videoId)
+                  {!isVideoInPlaylist(playlistItem?._id, videoId)
                   ? <button onClick={() => handlePlaylist(playlistItem)}>
                     Add
                   </button>
-                  : <button onClick={() => navigate(`/playlist/${playlistItem._id}`)}>
+                  : <button onClick={() => navigate(`/playlist/${playlistItem?._id}`)}>
                     Playlist
                 </button>
                   }
