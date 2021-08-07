@@ -4,7 +4,7 @@ import "./videocard.css";
 import data from "../../data/data";
 import { useLibrary } from "../../context/videoContext";
 import Loader from "react-loader-spinner";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 function Videolist() {
   const {
