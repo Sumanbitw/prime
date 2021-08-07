@@ -20,7 +20,15 @@ function Login() {
             setError(message)
         }
     }
-
+    const handleLogin = async(e) => {
+        e.preventDefault()
+        const { message, success } = await login("test@test", "test@12")
+        if(success){
+            navigate(state?.from ? state?.from : "/", { replace : true })
+        }else{
+            setError(message)
+        }
+    }
     useEffect(() => {
         user && navigate("/", { replace : true })
     }, [user, navigate])
@@ -31,6 +39,7 @@ function Login() {
             <div className="login-conatainer">
                 <div className="login-box">
                     <h1>Login</h1>
+                    {error && <p style={{ color: "red" }}>{error}</p>}
                     <div className="textbox email">
                         <i className="fas fa-user"></i>
                         <input 
@@ -56,6 +65,13 @@ function Login() {
                     type="submit"
                     >
                         Login
+                    </button>
+                    <button  
+                    className="btn"
+                    type="submit"
+                    onClick={(e) => handleLogin(e)}
+                    >
+                        Login with guest user
                     </button>
                     <button 
                     className="button"
