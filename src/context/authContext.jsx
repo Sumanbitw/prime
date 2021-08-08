@@ -21,9 +21,9 @@ export const AuthProvider = ({ children }) => {
 
   axios.interceptors.response.use(undefined, function (error) {
     if (
-      error.response.status === 401 ||
-      error.response.status === 403 ||
-      error.response.data.message === "authorization failed"
+      error?.response?.status === 401 ||
+      error?.response?.status === 403 ||
+      error?.response?.data?.message === "authorization failed"
     ) {
       logout();
     }

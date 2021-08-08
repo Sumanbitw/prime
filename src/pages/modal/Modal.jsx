@@ -26,7 +26,8 @@ function Modal({ showModal, close, videoObject }) {
       ? true
       : false;
   };
-  const addToPlaylist = async () => {
+  const addToPlaylist = async (e) => {
+    e.preventDefault()
     setNewPlaylist("");
     try {
       const result = await axios.post(
@@ -77,6 +78,8 @@ function Modal({ showModal, close, videoObject }) {
     }
   };
 
+  console.log(playlist)
+
   return (
     <div className={showModal ? "overlay" : "hide__modal"}>
       <div className={showModal ? "show__modal" : "hide__modal"}>
@@ -119,7 +122,7 @@ function Modal({ showModal, close, videoObject }) {
               value={newPlaylist}
               onChange={(e) => setNewPlaylist(e.target.value)}
             />
-            <button className="buttons" onClick={addToPlaylist}>
+            <button className="buttons" onClick={(e) => addToPlaylist(e)}>
               Create
             </button>
             <button className="buttons" onClick={close}>

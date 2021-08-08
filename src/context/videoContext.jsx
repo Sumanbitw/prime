@@ -25,7 +25,6 @@ export default function VideoPlayer ({ children }) {
               `https://primeapi-backend.herokuapp.com/bookmark/${user?._id}`
             );
             const videos = response.data;
-            console.log(videos)
             dispatch({ type: "CREATE__BOOKMARKVIDEOS", payload: videos });
           } catch (error) {}
         })();
@@ -49,6 +48,7 @@ export default function VideoPlayer ({ children }) {
         (async function getPlaylists(){
           const response = await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
           const playlist = response.data.playlist
+          console.log(playlist)
           dispatch({ type : "CREATE__PLAYLIST", payload : playlist })
         })()  
         return () => {}

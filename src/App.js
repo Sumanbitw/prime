@@ -34,7 +34,10 @@ function App() {
 
   useEffect(() => {
     (async function getPlaylists(){
-      await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
+      const response = await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
+      const playlist = response.data.playlist
+      console.log(playlist)
+      dispatch({ type : "CREATE__PLAYLIST", payload : playlist })
     })()  
     return () => {}
   }, [])
