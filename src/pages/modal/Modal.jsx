@@ -21,7 +21,7 @@ function Modal({ showModal, close, videoObject }) {
   const isVideoInPlaylist = (playlistId, videoId) => {
     return playlist &&
       playlist
-        .find((playlistObj) => playlistObj._id === playlistId)
+        .find((playlistObj) => playlistObj?._id === playlistId)
         ?.videos?.find((videoItem) => videoItem === videoId)
       ? true
       : false;
