@@ -18,7 +18,7 @@ function Playlist() {
     state: { playlist },
     dispatch,
   } = useLibrary();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const open = () => setShowModal(true);
   const close = () => setShowModal(true);
 
@@ -35,57 +35,56 @@ function Playlist() {
   useEffect(() => {
     (async function getPlaylists(){
       await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
+      
     })()  
     return () => {}
   }, [])
 
   return (
     <>
-      {loading ? (
-        <Loader type="Puff" color="white" height={80} width={80} timeout={1000} />
-      ) : (
-        <div className="playlist">
-          {playlist && playlist.length !== 0 ? (
-            playlist.map((playlistObj) => {
-              return (
-                <div key={playlistObj?._id} className="playlist__container">
-                  <p>{playlistObj && playlistObj.name}</p>
-                  <GoDeviceCameraVideo size={28} />
-                  <div className="btn__container">
-                    <Link to={`/playlist/${playlistObj?._id}`}>
-                      <button className="playlist__btn">View</button>
-                    </Link>
-                    <RiDeleteBin5Line
-                      size={25}
-                      className="playlistdetails__delete"
-                      onClick={() => handlePlaylist(playlistObj)}
-                    />
-                    {/* <GrEdit
+      (
+      <div className="playlist">
+        {playlist && playlist.length !== 0 ? (
+          playlist.map((playlistObj) => {
+            return (
+              <div key={playlistObj?._id} className="playlist__container">
+                <p>{playlistObj && playlistObj.name}</p>
+                <GoDeviceCameraVideo size={28} />
+                <div className="btn__container">
+                  <Link to={`/playlist/${playlistObj?._id}`}>
+                    <button className="playlist__btn">View</button>
+                  </Link>
+                  <RiDeleteBin5Line
+                    size={25}
+                    className="playlistdetails__delete"
+                    onClick={() => handlePlaylist(playlistObj)}
+                  />
+                  {/* <GrEdit
                   size={25}
                   color="white"
                   className="playlist__edit"
                   onClick={() => open()}
                 /> */}
 
-                    <Edit
-                      showModal={showModal}
-                      close={close}
-                      playlistObj={playlistObj}
-                    />
-                  </div>
+                  <Edit
+                    showModal={showModal}
+                    close={close}
+                    playlistObj={playlistObj}
+                  />
                 </div>
-              );
-            })
-          ) : (
-            <div className="container_p">
-              <p>
-                No playlist present
-              </p>
-              <button className="button_playlist" onClick={() => navigate("/")}>Create Playlist</button>
-            </div>
-          )}
-        </div>
-      )}
+              </div>
+            );
+          })
+        ) : (
+          <div className="container_p">
+            <p>No playlist present</p>
+            <button className="button_playlist" onClick={() => navigate("/")}>
+              Create Playlist
+            </button>
+          </div>
+        )}
+      </div>
+      )
     </>
   );
 }

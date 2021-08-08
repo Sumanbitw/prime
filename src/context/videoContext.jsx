@@ -44,6 +44,15 @@ export default function VideoPlayer ({ children }) {
         })();
         return () => {};
       }, []);
+
+      useEffect(() => {
+        (async function getPlaylists(){
+          const response = await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
+          const playlist = response.data.playlist
+          dispatch({ type : "CREATE__PLAYLIST", payload : playlist })
+        })()  
+        return () => {}
+      }, [])
     
    
     return (
