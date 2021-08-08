@@ -11,7 +11,7 @@ import { useAuth } from "../../context/authContext";
 function Modal({ showModal, close, videoObject }) {
   const [newPlaylist, setNewPlaylist] = useState("");
   const {
-    state: { videos, playlist },
+    state: { playlist },
     dispatch,
   } = useLibrary();
   const { user } = useAuth();
@@ -19,7 +19,7 @@ function Modal({ showModal, close, videoObject }) {
   const navigate = useNavigate();
 
   const isVideoInPlaylist = (playlistId, videoId) => {
-    return playlist.find(playlistObj => playlistObj._id === playlistId).videos.find(videoItem => videoItem === videoId)
+    return playlist && playlist.find(playlistObj => playlistObj?._id === playlistId).videos.find(videoItem => videoItem === videoId)
     ? true
     : false
 
