@@ -67,7 +67,13 @@
 }
 
 .container_b {
-    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40vh;
+    width: 80vw;
+    gap: 1rem;
+    align-items: center;
 }
 
 .container_b p{

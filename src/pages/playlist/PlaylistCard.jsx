@@ -50,6 +50,7 @@ function PlaylistCard({ item }) {
       <Link to={`/videodetails/${item}`}>
         <img src={imageURL(video && video.videoId)} alt="" />
       </Link>
+        <div className="playlist__title">{video && video.title}</div>
       <RiDeleteBin5Line
         size={30}
         className="playlist__card__delete__btn"

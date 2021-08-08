@@ -8,6 +8,7 @@
  border-right: 1px solid #1F2937;
  background-color: #1F2937;
  color: whitesmoke;
+ /* border-right: 1px solid whitesmoke; */
 }
 
 .sidebar__lists{

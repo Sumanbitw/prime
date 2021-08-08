@@ -12,7 +12,7 @@ import { useAuth } from "../../context/authContext";
 
 function Playlist() {
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const {
     state: { playlist },
@@ -28,12 +28,18 @@ function Playlist() {
         `https://primeapi-backend.herokuapp.com/playlists/${playlistObj?._id}`
       );
       dispatch({ type: "DELETE__PLAYLIST", payload: playlistObj?._id });
-      setLoading(false)
     } catch (error) {
       console.log(error);
     }
   };
-
+  // useEffect(() => {
+  //   (async function getPlaylists(){
+  //     const response = await axios.get(`https://primeapi-backend.herokuapp.com/playlists/${user?._id}`)
+  //     const playlist = response.data.playlist
+  //     dispatch({ type : "CREATE__PLAYLIST", payload : playlist })
+  //   })()  
+  //   return () => {}
+  // }, [])
 
   return (
     <>
