@@ -39,13 +39,13 @@ export const reducer = ( state, action ) => {
         case "SET__VIDEOS":
             return { ...state, videos : action.payload }
         case "CREATE__BOOKMARKVIDEOS":
-            const savedVideo = action.payload && action.payload.video.map(videoItem => {
+            const savedVideo = action.payload.video && action.payload.video.map(videoItem => {
                 return {...videoItem.video}
             })
             return { ...state, bookmarkVideos : savedVideo }
 
         case "CREATE__WATCHLATERVIDEOS":
-            const savedWatchlaterVideo = action.payload && action.payload.watchlaterVideo.map(videoItem => {
+            const savedWatchlaterVideo = action.payload.watchlaterVideo && action.payload.watchlaterVideo.map(videoItem => {
                 return {...videoItem.video}
             })
             return { ...state, watchLaterVideos : savedWatchlaterVideo }

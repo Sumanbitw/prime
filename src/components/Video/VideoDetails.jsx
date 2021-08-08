@@ -33,20 +33,18 @@ function VideoDetails() {
 
 
     const isVideoBookmarked = (id) => {
-    return bookmarkVideos.find((videoItem) => videoItem._id === id)
+    return bookmarkVideos && bookmarkVideos.find((videoItem) => videoItem._id === id)
       ? true
       : false;
   };
 
   const videoWatchLater = () => {
-    return watchLaterVideos.find(
+    return watchLaterVideos && watchLaterVideos.find(
         (videoItem) => videoItem._id === videoId
       )
       ? true
       : false;
   };
-  console.log(isVideoBookmarked())
-  console.log(videoWatchLater())
 
   const handleBookmarkVideos = async () => {
     if (user) {
@@ -146,8 +144,12 @@ function VideoDetails() {
               size={28}
               className="icons"
               onClick={() => {
-                open();
-                setVideo(videoObject);
+                if(user){
+                  open();
+                  setVideo(videoObject);
+                }else{
+                  toast("You need to sign in", { type: "warning" })
+                }
               }}
             />
 

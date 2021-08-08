@@ -19,11 +19,13 @@ function Modal({ showModal, close, videoObject }) {
   const navigate = useNavigate();
 
   const isVideoInPlaylist = (playlistId, videoId) => {
-    return playlist && playlist.find(playlistObj => playlistObj?._id === playlistId).videos.find(videoItem => videoItem === videoId)
-    ? true
-    : false
-
-  }
+    return playlist &&
+      playlist
+        .find((playlistObj) => playlistObj._id === playlistId)
+        ?.videos?.find((videoItem) => videoItem === videoId)
+      ? true
+      : false;
+  };
   const addToPlaylist = async () => {
     setNewPlaylist("");
     try {
@@ -62,7 +64,10 @@ function Modal({ showModal, close, videoObject }) {
         console.log(result);
         dispatch({
           type: "ADD__VIDEOS__FROM__PLAYLIST",
-          payload: { videos: result.data.updatedPlaylist.videos, playlistId: result.data.updatedPlaylist._id },
+          payload: {
+            videos: result.data.updatedPlaylist.videos,
+            playlistId: result.data.updatedPlaylist._id,
+          },
         });
       } catch (error) {
         console.log(error);
@@ -82,20 +87,28 @@ function Modal({ showModal, close, videoObject }) {
           </div>
           <div className="modal__body">
             <div className="modal__details"></div>
-            {playlist &&
+            {playlist && playlist.length !== 0 ? (
               playlist.map((playlistItem) => (
                 <div className="modal__videoItem">
                   <p>{playlistItem && playlistItem.name}</p>
-                  {!isVideoInPlaylist(playlistItem?._id, videoId)
-                  ? <button onClick={() => handlePlaylist(playlistItem)}>
-                    Add
-                  </button>
-                  : <button onClick={() => navigate(`/playlist/${playlistItem?._id}`)}>
-                    Playlist
-                </button>
-                  }
+                  {!isVideoInPlaylist(playlistItem?._id, videoId) ? (
+                    <button onClick={() => handlePlaylist(playlistItem)}>
+                      Add
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => navigate(`/playlist/${playlistItem?._id}`)}
+                    >
+                      Playlist
+                    </button>
+                  )}
                 </div>
-              ))}
+              ))
+            ) : (
+              <div>
+                <p>No playlist is created</p>
+              </div>
+            )}
           </div>
 
           <div className="modal__footer">
