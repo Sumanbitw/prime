@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
   );
 
   if (token) {
-    console.log("token set");
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
 
@@ -39,7 +38,6 @@ export const AuthProvider = ({ children }) => {
         password,
       });
       if (success) {
-        console.log(token);
         setUser(user);
         setToken(token);
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -48,7 +46,6 @@ export const AuthProvider = ({ children }) => {
       }
       return { user, message, success };
     } catch (error) {
-      console.log(error);
       return { message: error.message, success: false };
     }
   };
@@ -71,7 +68,6 @@ export const AuthProvider = ({ children }) => {
       }
       return { user, message, success };
     } catch (error) {
-      console.log(error);
       return { message: error.message, success: false };
     }
   };

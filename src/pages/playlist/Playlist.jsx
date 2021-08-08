@@ -28,9 +28,7 @@ function Playlist() {
         `https://primeapi-backend.herokuapp.com/playlists/${playlistObj?._id}`
       );
       dispatch({ type: "DELETE__PLAYLIST", payload: playlistObj?._id });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   useEffect(() => {
     (async function getPlaylists(){

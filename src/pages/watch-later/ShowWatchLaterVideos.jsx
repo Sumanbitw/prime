@@ -15,7 +15,6 @@ function ShowWatchLaterVideos({ item }) {
       const response = await axios.delete(
         `https://primeapi-backend.herokuapp.com/watchlater/${user?._id}/${item?._id}`
       );
-      console.log(response);
       dispatch({ type: "REMOVE__WATCHLATER__VIDEOS", payload: item });
     } catch (error) {}
   };

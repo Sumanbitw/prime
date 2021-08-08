@@ -43,8 +43,6 @@ function VideoDetails() {
       )
   };
 
-  console.log(isVideoBookmarked())
-  console.log(videoWatchLater())
   const handleBookmarkVideos = async () => {
     if (user) {
       if (!isVideoBookmarked()) {

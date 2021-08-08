@@ -27,7 +27,6 @@ function Bookmark() {
     })();
   }, []);
 
-console.log(bookmarkVideos)
 
   return (
     <>
