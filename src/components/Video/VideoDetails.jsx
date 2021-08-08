@@ -32,20 +32,19 @@ function VideoDetails() {
     videos.videos.find((videoItem) => videoItem._id === videoId);
 
 
-    const isVideoBookmarked = (id) => {
-    return bookmarkVideos && bookmarkVideos.find((videoItem) => videoItem._id === id)
-      ? true
-      : false;
+    const isVideoBookmarked = () => {
+    return bookmarkVideos && bookmarkVideos.find((videoItem) => videoItem._id === videoId)
+      
   };
 
   const videoWatchLater = () => {
     return watchLaterVideos && watchLaterVideos.find(
         (videoItem) => videoItem._id === videoId
       )
-      ? true
-      : false;
   };
 
+  console.log(isVideoBookmarked())
+  console.log(videoWatchLater())
   const handleBookmarkVideos = async () => {
     if (user) {
       if (!isVideoBookmarked()) {
@@ -119,7 +118,7 @@ function VideoDetails() {
             </div>
           </div>
           <div className="icons__container">
-            {!isVideoBookmarked(videoObject && videoObject._id) ? (
+            {!isVideoBookmarked() ? (
               <BsBookmark
                 size={28}
                 className="icons"
