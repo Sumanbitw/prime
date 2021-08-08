@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { imageURL } from "../../util/util";
@@ -11,13 +11,15 @@ function ShowBookmarkedItems({ item }) {
   const { dispatch } = useLibrary();
   const { user } = useAuth()
 
-  const removeBookmarkVideo = async (item) => {
+  const removeBookmarkVideo = async () => {
     try{
         const response = await axios.delete(`https://primeapi-backend.herokuapp.com/bookmark/${user?._id}/${item?._id}`)
-        console.log(response)
-        dispatch({ type : "REMOVE__BOOKMARK__VIDEOS", payload : item })
+        if(response.data.success){
+          dispatch({ type : "REMOVE__BOOKMARK__VIDEOS", payload : item })
+        }
     }catch(error){}
   }
+
   return (
     <div className="showbookmark">
       <div className="showbookmark__container" key={item?._id}>
@@ -31,7 +33,7 @@ function ShowBookmarkedItems({ item }) {
         <RiDeleteBin5Fill
           size={22}
           className="delete__btn"
-          onClick={() => removeBookmarkVideo(item)}
+          onClick={removeBookmarkVideo}
         />
         <div className="showbookmark__details">
           <div className="showbookmark__title">

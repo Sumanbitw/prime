@@ -15,31 +15,28 @@ function WatchLater() {
   } = useLibrary();
   const { user } = useAuth();
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async function () {
       try {
-        const response = await axios.get(
+        await axios.get(
           `https://primeapi-backend.herokuapp.com/watchlater/${user?._id}`
         );
-        const videos = response.data;
-        dispatch({ type: "CREATE__WATCHLATERVIDEOS", payload: videos });
-        setLoading(false);
       } catch (error) {}
-    })();
-    return () => {};
+    })();  
   }, []);
+
   return (
     <>
       {loading ? (
         <Loader type="Puff" color="white" height={80} width={80} timeout={1000}/>
       ) : (
         <div className="watchlater">
-          {watchLaterVideos.watchlaterVideo &&
-          watchLaterVideos.watchlaterVideo.length !== 0 ? (
-            watchLaterVideos.watchlaterVideo.map((item) => (
-              <ShowWatchLaterVideos item={item.video} />
+          {watchLaterVideos &&
+          watchLaterVideos.length !== 0 ? (
+            watchLaterVideos.map((item) => (
+              <ShowWatchLaterVideos item={item} />
             ))
           ) : (
             <div className="container_w">

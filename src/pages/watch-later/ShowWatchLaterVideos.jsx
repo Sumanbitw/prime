@@ -10,7 +10,7 @@ function ShowWatchLaterVideos({ item }) {
   const { dispatch } = useLibrary();
   const { user } = useAuth();
 
-  const removeWatchlaterVideo = async (item) => {
+  const removeWatchlaterVideo = async () => {
     try {
       const response = await axios.delete(
         `https://primeapi-backend.herokuapp.com/watchlater/${user?._id}/${item?._id}`
@@ -32,7 +32,7 @@ function ShowWatchLaterVideos({ item }) {
         <RiDeleteBin5Fill
           size={22}
           className="delete__btn"
-          onClick={() => removeWatchlaterVideo(item)}
+          onClick={removeWatchlaterVideo}
         />
         <div className="showwatchlatervideos__details">
           <div className="showwatchlatervideos__title">

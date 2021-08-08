@@ -39,10 +39,16 @@ export const reducer = ( state, action ) => {
         case "SET__VIDEOS":
             return { ...state, videos : action.payload }
         case "CREATE__BOOKMARKVIDEOS":
-            return { ...state, bookmarkVideos : action.payload }
+            const savedVideo = action.payload && action.payload.video.map(videoItem => {
+                return {...videoItem.video}
+            })
+            return { ...state, bookmarkVideos : savedVideo }
 
         case "CREATE__WATCHLATERVIDEOS":
-            return { ...state, watchLaterVideos : action.payload }
+            const savedWatchlaterVideo = action.payload && action.payload.watchlaterVideo.map(videoItem => {
+                return {...videoItem.video}
+            })
+            return { ...state, watchLaterVideos : savedWatchlaterVideo }
         
         case "CREATE__PLAYLIST": 
             return {...state, playlist : state.playlist.concat(action.payload)}
@@ -114,16 +120,35 @@ export const reducer = ( state, action ) => {
                 ...state,
                 history : state.history.unshift(action.payload)
             }
-        case "REMOVE__BOOKMARK__VIDEOS": 
+
+        case "ADD__BOOKMARKVIDEOS":
+            if(!state.bookmarkVideos.find(videoItem => videoItem._id === action.payload._id)){
+                return {
+                    ...state,
+                    bookmarkVideos : [...state.bookmarkVideos, action.payload]
+                }
+            }
+            return state
+
+            case "ADD__WATCHLATERVIDEOS":
+                if(!state.watchLaterVideos.find(videoItem => videoItem._id === action.payload._id)){
+                    return {
+                        ...state,
+                        watchLaterVideos : [...state.watchLaterVideos, action.payload]
+                    }
+                }
+                return state
+            
+        case "REMOVE__BOOKMARK__VIDEOS":
            return {
                ...state,
-               bookmarkVideos : state.bookmarkVideos.video.filter(item => item._id !== action.payload._id)
+               bookmarkVideos : state.bookmarkVideos.filter(item => item._id !== action.payload._id)
            }
         
         case "REMOVE__WATCHLATER__VIDEOS": 
            return {
                ...state,
-               watchLaterVideos : state.watchLaterVideos.watchlaterVideo.filter(item => item._id !== action.payload._id)
+               watchLaterVideos : state.watchLaterVideos.filter(item => item._id !== action.payload._id)
            }
         
         case "REMOVE__VIDEOS__FROM__HISTORY":

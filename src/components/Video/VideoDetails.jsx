@@ -30,36 +30,38 @@ function VideoDetails() {
   const videoObject =
     videos.videos &&
     videos.videos.find((videoItem) => videoItem._id === videoId);
-  const isVideoBookmarked = () => {
-    return bookmarkVideos.video &&
-      bookmarkVideos.video.find((videoItem) => videoItem.video._id === videoId)
+
+
+    const isVideoBookmarked = (id) => {
+    return bookmarkVideos.find((videoItem) => videoItem._id === id)
       ? true
       : false;
   };
 
   const videoWatchLater = () => {
-    return watchLaterVideos.watchlaterVideo &&
-      watchLaterVideos.watchlaterVideo.find(
-        (videoItem) => videoItem.video._id === videoId
+    return watchLaterVideos.find(
+        (videoItem) => videoItem._id === videoId
       )
       ? true
       : false;
   };
+  console.log(isVideoBookmarked())
+  console.log(videoWatchLater())
 
   const handleBookmarkVideos = async () => {
     if (user) {
       if (!isVideoBookmarked()) {
         try {
-          const response = await axios.post(
+          await axios.post(
             `https://primeapi-backend.herokuapp.com/bookmark`,
             {
               user: user?._id,
               video: videoId,
             }
           );
+          dispatch({ type: "ADD__BOOKMARKVIDEOS", payload: videoObject });
+          toast("Video Bookmarked", { type: "success" });
         } catch (error) {}
-        dispatch({ type: "CREATE__BOOKMARKVIDEOS", payload: videoObject });
-        toast("Video Bookmarked", { type: "success" });
       } else {
         toast("Video already present", { type: "info" });
       }
@@ -80,7 +82,7 @@ function VideoDetails() {
             }
           );
         } catch (error) {}
-        dispatch({ type: "CREATE__WATCHLATERVIDEOS", payload: videoObject });
+        dispatch({ type: "ADD__WATCHLATERVIDEOS", payload: videoObject });
         toast("Video marked for watch later", { type: "success" });
       } else {
         toast("Video already present", { type: "info" });
@@ -119,7 +121,7 @@ function VideoDetails() {
             </div>
           </div>
           <div className="icons__container">
-            {!isVideoBookmarked() ? (
+            {!isVideoBookmarked(videoObject && videoObject._id) ? (
               <BsBookmark
                 size={28}
                 className="icons"
