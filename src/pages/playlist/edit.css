@@ -1,0 +1,37 @@
+.overlay__edit{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.show__edit__modal{
+    display: block;
+    border: 2px solid whitesmoke;
+    background-color: #1F2937;
+    position: relative;
+    top: 20%;
+    left: 30%;
+    right: 30%;
+    width: 40%;
+}
+
+.hide__edit__modal{
+    display:none;
+}
+
+.modal__container__1{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.modal__body__1{
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+   justify-content: center;
+}

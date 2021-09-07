@@ -1,0 +1,61 @@
+.videodetails{
+    margin-left: 15%;
+    background-color: #1F2937;
+    position: relative;
+    top: 5rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid whitesmoke;
+}
+.video{
+    position: relative;
+    top: 0;
+}
+.video__container{
+    border: 2px solid black;
+    position: relative;
+    
+}
+ 
+.react-player {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+.text__container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    color: whitesmoke;
+    padding: 1rem;
+}
+.videodetails__image{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-top: 1rem;
+}
+.text__container span{
+    position: relative;
+    top: -1rem;
+}
+
+.text__container p{
+    width: 70%;
+    margin-left: 4rem;
+    line-height: 1.5;
+}
+.text__align span{
+    position: relative;
+    top: 0.3rem;
+    margin-left: 3rem;
+}
+
+.icons__container{
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    cursor: pointer;
+}

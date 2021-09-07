@@ -1,0 +1,68 @@
+.videolist{
+    background-color: #1F2937;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    justify-content: space-evenly;
+    top: 5rem;
+    /* width: 100%; */
+    margin-left: 15%;
+    /* z-index: -1; */
+}
+
+.videocard__container{
+    border: 2px solid #1F2937;
+    background-color:#1F2937; 
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+    margin: 1rem 0;
+
+}
+.videoCard{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 10rem;
+    background-color: #1F2937;
+    width: 20rem;
+    margin: 0 auto;
+    color: whitesmoke;
+}
+
+.videocard__img img{
+    height: 11.20rem;
+    width: 20rem;
+    object-fit: cover;
+    cursor: pointer;
+
+}
+
+.videocard__details{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+} 
+.videocard__details img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin: 1rem;
+}
+.videocard__title{
+    width: 65%;
+}
+.icon{
+    margin-top: 1rem;
+}
+.videocard__info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 5rem;
+}
+
+.videocard__info p{
+    margin: 0 0.5rem;
+}
